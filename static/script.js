@@ -7,9 +7,16 @@ socket.on('connect',function() {
 // Code to send custom message to flask server
   socket.emit('custom event', 'The custom event message!');
 
+// Code to send custom json message to flask server
+  socket.emit('custom event2',{'name':'Enes'})
+
 // Code to receive custom message from flask server
   socket.on('from flask',function(msg) {
-    alert(msg)
+    alert(msg);
+  });
+// Code to receive json messahe from  flask server
+  socket.on('from flask2',function(msg) {
+    alert(msg['extension']);
   });
 
 // Code to receive message from flask server

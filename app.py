@@ -23,5 +23,11 @@ def receive_custom_event(message):
     print('The custom message is: {}'.format(message))
     emit('from flask','This is a custom event from Flask')
 
+#Command to receive custom json message from javascript client
+@socketio.on('custom event2')
+def receive_custom_event(message):
+    print('The custom message is: {}'.format(message['name']))
+    emit('from flask2',{'extension':'Flask-SocketIO'},json=True)
+
 if __name__ == "__main__":
     socketio.run(app)
