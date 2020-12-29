@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, send
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secretkey'
@@ -15,6 +15,8 @@ def index():
 @socketio.on('message')
 def receive_message(message):
     print('#######: {}'.format(message))
+#Command to send message from Flask to javascript client
+    send('This is a message from Flask')
 
 if __name__ == "__main__":
     socketio.run(app)
